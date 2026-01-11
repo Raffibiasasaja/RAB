@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AgriSmart — AI-Driven Agribusiness Decision Intelligence Platform</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <p class="eyebrow">AgriSmart</p>
+      <h1>AI-Driven Agribusiness Decision Intelligence Platform</h1>
+      <p class="subtitle">Sistem pendukung keputusan agribisnis untuk skripsi Fakultas Pertanian dengan standar akademik tinggi.</p>
+    </div>
+    <div class="status-pill">Prototype Akademik • Simulasi Inference</div>
+  </header>
+
+  <main>
+    <section class="pipeline">
+      <h2>Arsitektur Konseptual</h2>
+      <div class="pipeline-steps">
+        <span>Input Data</span>
+        <span>Diagnosis</span>
+        <span>Goal Selection</span>
+        <span>Scenario Simulation</span>
+        <span>Optimization Engine</span>
+        <span>Explainable AI</span>
+        <span>Risk Analysis</span>
+        <span>Decision Output</span>
+        <span>Report Generation</span>
+      </div>
+    </section>
+
+    <section class="flow">
+      <nav class="flow-nav">
+        <button class="tab active" data-step="input">1. Input Data</button>
+        <button class="tab" data-step="goal">2. Tujuan</button>
+        <button class="tab" data-step="analysis">3. Analisis</button>
+        <button class="tab" data-step="scenario">4. Skenario</button>
+        <button class="tab" data-step="decision">5. Keputusan</button>
+        <button class="tab" data-step="report">6. Laporan</button>
+      </nav>
+
+      <div class="flow-content">
+        <section id="step-input" class="step active">
+          <h3>Input Data Agribisnis</h3>
+          <form id="input-form" class="card">
+            <div class="grid-2">
+              <label>
+                Komoditas
+                <select name="commodity" required>
+                  <option value="">Pilih komoditas</option>
+                  <option value="padi">Padi</option>
+                  <option value="jagung">Jagung</option>
+                  <option value="cabai">Cabai</option>
+                </select>
+              </label>
+              <label>
+                Luas Lahan (Ha)
+                <input type="number" name="area" min="0.1" step="0.1" placeholder="Contoh: 1.5" required />
+              </label>
+              <label>
+                Jumlah Pupuk (Kg)
+                <input type="number" name="fertilizer" min="0" step="10" placeholder="Contoh: 400" required />
+              </label>
+              <label>
+                Curah Hujan (mm/bulan)
+                <input type="number" name="rainfall" min="0" step="1" placeholder="Contoh: 180" required />
+              </label>
+              <label>
+                Suhu Rata-rata (°C)
+                <input type="number" name="temperature" min="0" step="0.1" placeholder="Contoh: 26" required />
+              </label>
+              <label>
+                Biaya Produksi Total (Rp)
+                <input type="number" name="cost" min="0" step="10000" placeholder="Contoh: 12000000" required />
+              </label>
+              <label>
+                Metode Budidaya
+                <select name="method" required>
+                  <option value="">Pilih metode</option>
+                  <option value="manual">Manual</option>
+                  <option value="semi-modern">Semi-modern</option>
+                  <option value="modern">Modern</option>
+                </select>
+              </label>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="primary">Simpan & Analisis</button>
+              <p class="helper">Input akan divalidasi, ditandai statusnya, dan disimpan sebagai case study.</p>
+            </div>
+          </form>
+          <div id="validation-panel" class="card hidden">
+            <h4>Diagnosis & Validasi Data</h4>
+            <div class="status-grid" id="validation-grid"></div>
+            <p class="note">Status “Di luar rentang data latih” menandakan simulasi inference dan membutuhkan validasi lapangan.</p>
+          </div>
+        </section>
+
+        <section id="step-goal" class="step">
+          <h3>Goal Mode: Tujuan Analisis</h3>
+          <div class="card">
+            <p>Pilih tujuan utama agar sistem dapat mengoptimalkan keputusan sesuai preferensi pengguna.</p>
+            <div class="goal-options">
+              <label class="goal">
+                <input type="radio" name="goal" value="profit" />
+                <div>
+                  <strong>Maksimalkan Profit</strong>
+                  <span>Fokus pada pendapatan bersih tertinggi.</span>
+                </div>
+              </label>
+              <label class="goal">
+                <input type="radio" name="goal" value="efficiency" />
+                <div>
+                  <strong>Maksimalkan Efisiensi (R/C)</strong>
+                  <span>Rasio keuntungan terhadap biaya.</span>
+                </div>
+              </label>
+              <label class="goal">
+                <input type="radio" name="goal" value="cost" />
+                <div>
+                  <strong>Minimalkan Biaya Produksi</strong>
+                  <span>Mengurangi biaya dengan risiko terkendali.</span>
+                </div>
+              </label>
+              <label class="goal">
+                <input type="radio" name="goal" value="stability" />
+                <div>
+                  <strong>Produksi Stabil (Risiko Rendah)</strong>
+                  <span>Menjaga konsistensi hasil panen.</span>
+                </div>
+              </label>
+            </div>
+            <button id="goal-confirm" class="primary">Simpan Tujuan</button>
+          </div>
+        </section>
+
+        <section id="step-analysis" class="step">
+          <h3>Analisis AI & Efisiensi Agribisnis</h3>
+          <div class="grid-3">
+            <div class="card kpi">
+              <h4>Prediksi Hasil Panen</h4>
+              <div id="prediction-metrics" class="kpi-body"></div>
+              <p class="note">Model AI dapat diganti dengan file .h5 / .tflite untuk inference aktual.</p>
+            </div>
+            <div class="card kpi">
+              <h4>Efisiensi Ekonomi</h4>
+              <div id="efficiency-metrics" class="kpi-body"></div>
+              <div id="efficiency-status" class="status-pill"></div>
+            </div>
+            <div class="card kpi">
+              <h4>Data Storytelling</h4>
+              <div id="story-summary" class="kpi-body"></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="step-scenario" class="step">
+          <h3>Scenario Engine & What-if Simulation</h3>
+          <div class="card">
+            <div class="scenario-header">
+              <p>Simulasi otomatis berbagai kombinasi pupuk, metode budidaya, tenaga kerja, dan kondisi lingkungan.</p>
+              <button id="run-simulation" class="primary">Jalankan Simulasi</button>
+            </div>
+            <div id="scenario-table" class="table"></div>
+          </div>
+        </section>
+
+        <section id="step-decision" class="step">
+          <h3>Optimization Engine & Explainable AI</h3>
+          <div class="grid-2">
+            <div class="card">
+              <h4>Top 3 Skenario Terbaik</h4>
+              <div id="top-scenarios"></div>
+              <h4>Keputusan Optimal</h4>
+              <div id="decision-output"></div>
+            </div>
+            <div class="card">
+              <h4>Explainable AI: Kenapa?</h4>
+              <div id="explainable-ai"></div>
+            </div>
+          </div>
+          <div class="grid-2">
+            <div class="card">
+              <h4>Risk & Sensitivity Analysis</h4>
+              <div id="risk-analysis"></div>
+            </div>
+            <div class="card">
+              <h4>Perbandingan Awal vs Optimal</h4>
+              <div id="comparison"></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="step-report" class="step">
+          <h3>Report Generator (Akademik Ready)</h3>
+          <div class="card">
+            <p>Laporan otomatis berisi input data, metodologi, hasil analisis, rekomendasi, dan keterbatasan sistem.</p>
+            <button id="generate-report" class="primary">Buat Laporan</button>
+            <button id="download-report" class="secondary" disabled>Unduh Laporan (.txt)</button>
+            <pre id="report-output"></pre>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="academic-notes">
+      <h2>Batasan Akademik</h2>
+      <ul>
+        <li>Sistem ini merupakan prototype pengembangan untuk kebutuhan skripsi.</li>
+        <li>Model AI menggunakan simulasi inference dan dapat diganti model aktual.</li>
+        <li>Validasi lapangan diperlukan sebelum implementasi nyata.</li>
+      </ul>
+    </section>
+  </main>
+
+  <div id="loading" class="loading hidden">
+    <div class="spinner"></div>
+    <p>AI sedang menganalisis…</p>
+  </div>
+
+  <footer>
+    <p>AgriSmart © 2024 — Decision Intelligence for Agribusiness.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
